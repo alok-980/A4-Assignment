@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BUTUSIC — Illustrations Exhibition</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="page-wrap">
+
+        <!-- ══════════════════════════════════════
+       BENTO GRID — 4 cols × 3 rows
+  ══════════════════════════════════════ -->
+        <div class="bento">
+
+            <!-- ─────────────────────────────────────
+         CARD 1 · col 1, row 1
+         Purple bg — 3D character illustration
+    ───────────────────────────────────────── -->
+            <div class="card card-char-purple">
+                <!-- 3D character placeholder using CSS art -->
+                <div class="char-blob purple-blob">
+                    <div class="char-face">
+                        <div class="char-eye left-eye"></div>
+                        <div class="char-eye right-eye"></div>
+                        <div class="char-hair"></div>
+                    </div>
+                    <div class="char-body green-jacket"></div>
+                </div>
+                <!-- Using a public 3D art style image -->
+                <img src="https://images.unsplash.com/photo-1636622433525-127afdf3662d?w=400&q=85" alt="3D character"
+                    class="char-img" onerror="this.style.display='none'" />
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 2 · col 2, row 1-2
+         Black — Rotating "MORE CASES" circle + daisy
+    ───────────────────────────────────────── -->
+            <div class="card card-circle">
+                <div class="rotating-ring">
+                    <svg viewBox="0 0 220 220" class="ring-svg" id="rotatingSvg">
+                        <defs>
+                            <path id="ringPath" d="M110,110 m-85,0 a85,85 0 1,1 170,0 a85,85 0 1,1 -170,0" />
+                        </defs>
+                        <!-- Rotating text -->
+                        <text font-size="11.5" fill="white" font-family="Barlow" font-weight="700" letter-spacing="5">
+                            <textPath href="#ringPath">
+                                MORE CASES • MORE CASES • MORE CASES • MORE CASES •
+                            </textPath>
+                        </text>
+                        <!-- Green dots on ring -->
+                        <circle cx="110" cy="25" r="4" fill="#C5F135" />
+                        <circle cx="195" cy="110" r="4" fill="#C5F135" />
+                        <circle cx="110" cy="195" r="4" fill="#C5F135" />
+                        <circle cx="25" cy="110" r="4" fill="#C5F135" />
+                        <!-- Inner lime circle -->
+                        <circle cx="110" cy="110" r="60" fill="none" stroke="#C5F135" stroke-width="1.5" />
+                        <!-- Daisy flower in center -->
+                        <g transform="translate(110,110)">
+                            <!-- Petals -->
+                            <ellipse rx="8" ry="20" fill="none" stroke="white" stroke-width="1.8"
+                                transform="rotate(0)" />
+                            <ellipse rx="8" ry="20" fill="none" stroke="white" stroke-width="1.8"
+                                transform="rotate(45)" />
+                            <ellipse rx="8" ry="20" fill="none" stroke="white" stroke-width="1.8"
+                                transform="rotate(90)" />
+                            <ellipse rx="8" ry="20" fill="none" stroke="white" stroke-width="1.8"
+                                transform="rotate(135)" />
+                            <!-- Center dot -->
+                            <circle r="9" fill="none" stroke="white" stroke-width="1.8" />
+                            <circle r="3" fill="white" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 3 · col 3, row 1-3
+         Black — Navigation menu
+    ───────────────────────────────────────── -->
+            <div class="card card-nav">
+                <nav class="nav-menu">
+
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
+                            </svg>
+                        </div>
+                        <span>CATEGORIES</span>
+                    </div>
+
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <rect x="2" y="5" width="20" height="14" rx="3" />
+                                <line x1="2" y1="10" x2="22" y2="10" />
+                            </svg>
+                        </div>
+                        <span>PAYMENT</span>
+                    </div>
+
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                            </svg>
+                        </div>
+                        <span>AUTHORS</span>
+                    </div>
+
+                    <!-- AUCTION — highlighted row -->
+                    <div class="nav-item nav-active">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <path d="M14.5 2.5l7 7-10 10-7-7 10-10z" />
+                                <line x1="3" y1="21" x2="9" y2="15" />
+                            </svg>
+                        </div>
+                        <span>AUCTION</span>
+                        <div class="active-dot"></div>
+                    </div>
+
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <polyline points="22,7 13,7 13,2" />
+                                <polyline points="2,17 11,17 11,22" />
+                                <path d="M22 7l-9 9-4-4-7 7" />
+                            </svg>
+                        </div>
+                        <span>SALES</span>
+                    </div>
+
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <polygon
+                                    points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                            </svg>
+                        </div>
+                        <span>REVIEWS</span>
+                    </div>
+
+                    <div class="nav-divider"></div>
+
+                    <div class="nav-item">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20"
+                                height="20">
+                                <rect x="2" y="4" width="20" height="16" rx="3" />
+                                <polyline points="2,4 12,13 22,4" />
+                            </svg>
+                        </div>
+                        <span>CONTACTS</span>
+                    </div>
+
+                </nav>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 4a · col 4, row 1
+         Purple banner — exclusive info
+    ───────────────────────────────────────── -->
+            <div class="card card-banner-purple">
+                <div class="banner-left">
+                    <div class="banner-icon smiley-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                            <circle cx="9" cy="10" r="1" fill="white" />
+                            <circle cx="15" cy="10" r="1" fill="white" />
+                        </svg>
+                    </div>
+                    <span>Only exclusive<br />illustrations</span>
+                </div>
+                <div class="banner-divider"></div>
+                <div class="banner-right">
+                    <div class="banner-icon box-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
+                            <path
+                                d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                            <polyline points="3.27,6.96 12,12.01 20.73,6.96" />
+                            <line x1="12" y1="22.08" x2="12" y2="12" />
+                        </svg>
+                    </div>
+                    <span>We do not sell<br />works on stock</span>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 4b · col 4, row 2-3
+         Lime/Yellow-green bg — 3D blue sweater character
+    ───────────────────────────────────────── -->
+            <div class="card card-char-lime">
+                <img src="https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?w=400&q=85"
+                    alt="3D character blue sweater" class="char-img lime-char-img"
+                    onerror="this.style.display='none'" />
+                <!-- CSS fallback character -->
+                <div class="lime-char-fallback">
+                    <div class="lc-head"></div>
+                    <div class="lc-body"></div>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 5 · col 1-2, row 2-3 area / standalone
+         Black + lime border — BUTUSIC branding
+    ───────────────────────────────────────── -->
+            <div class="card card-brand">
+                <div class="brand-top">
+                    <h1 class="brand-name">BUTUSIC</h1>
+                    <p class="brand-sub">ILLUSTRATIONS<br />EXHIBITION</p>
+                </div>
+                <div class="brand-divider"></div>
+                <div class="bitcoin-row">
+                    <div class="bitcoin-icon">
+                        <svg viewBox="0 0 24 24" fill="#C5F135" width="22" height="22">
+                            <path
+                                d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19 20 15.19 20 10.5 16.19 2 11.5 2zm1.41 11.08c-.34.58-1.03.9-1.91.9H9v1.54H7.5v-1.54H6.5V8.5H7.5V7h1.5v1.5h1.5c.88 0 1.57.32 1.91.9.34.58.34 1.2 0 1.78.34.58.34 1.2 0 1.78l-.5.12zM9 9.5v3h1.5c.55 0 .86-.18 1-.5.14-.32.14-.68 0-1-.14-.32-.45-.5-1-.5H9z" />
+                        </svg>
+                    </div>
+                    <p class="bitcoin-text">We accept more<br />than just bitcoins</p>
+                </div>
+                <!-- Barcode -->
+                <div class="barcode">
+                    <svg viewBox="0 0 200 40" width="100%" height="40">
+                        <!-- Simulated barcode bars -->
+                        <g fill="white">
+                            <rect x="0" y="0" width="3" height="40" />
+                            <rect x="5" y="0" width="1" height="40" />
+                            <rect x="8" y="0" width="4" height="40" />
+                            <rect x="14" y="0" width="2" height="40" />
+                            <rect x="18" y="0" width="3" height="40" />
+                            <rect x="23" y="0" width="1" height="40" />
+                            <rect x="26" y="0" width="5" height="40" />
+                            <rect x="33" y="0" width="2" height="40" />
+                            <rect x="37" y="0" width="3" height="40" />
+                            <rect x="42" y="0" width="1" height="40" />
+                            <rect x="45" y="0" width="4" height="40" />
+                            <rect x="51" y="0" width="2" height="40" />
+                            <rect x="55" y="0" width="3" height="40" />
+                            <rect x="60" y="0" width="1" height="40" />
+                            <rect x="63" y="0" width="5" height="40" />
+                            <rect x="70" y="0" width="2" height="40" />
+                            <rect x="74" y="0" width="3" height="40" />
+                            <rect x="79" y="0" width="1" height="40" />
+                            <rect x="82" y="0" width="4" height="40" />
+                            <rect x="88" y="0" width="2" height="40" />
+                            <rect x="92" y="0" width="3" height="40" />
+                            <rect x="97" y="0" width="1" height="40" />
+                            <rect x="100" y="0" width="5" height="40" />
+                            <rect x="107" y="0" width="2" height="40" />
+                            <rect x="111" y="0" width="3" height="40" />
+                            <rect x="116" y="0" width="1" height="40" />
+                            <rect x="119" y="0" width="4" height="40" />
+                            <rect x="125" y="0" width="2" height="40" />
+                            <rect x="129" y="0" width="3" height="40" />
+                            <rect x="134" y="0" width="1" height="40" />
+                            <rect x="137" y="0" width="5" height="40" />
+                            <rect x="144" y="0" width="2" height="40" />
+                            <rect x="148" y="0" width="3" height="40" />
+                            <rect x="153" y="0" width="1" height="40" />
+                            <rect x="156" y="0" width="4" height="40" />
+                            <rect x="162" y="0" width="2" height="40" />
+                            <rect x="166" y="0" width="3" height="40" />
+                            <rect x="171" y="0" width="1" height="40" />
+                            <rect x="174" y="0" width="5" height="40" />
+                            <rect x="181" y="0" width="2" height="40" />
+                            <rect x="185" y="0" width="3" height="40" />
+                            <rect x="190" y="0" width="1" height="40" />
+                            <rect x="193" y="0" width="4" height="40" />
+                            <rect x="199" y="0" width="1" height="40" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 6 · col 2, row 2
+         Black — Exhibition info
+    ───────────────────────────────────────── -->
+            <div class="card card-info">
+                <div class="info-location">
+                    <div class="loc-icon">
+                        <svg viewBox="0 0 24 24" fill="#C5F135" width="18" height="18">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                    </div>
+                    <span>1217 PURRWEB<br />STREET, LA</span>
+                </div>
+                <h3 class="info-title">FIRST EXHIBITION OF<br />ILLUSTRATIONS OFFLINE</h3>
+                <p class="info-url">BUTUSIC.COM/EXHIBITION</p>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 7 · col 2, row 3
+         Black — 4 medal/award icons
+    ───────────────────────────────────────── -->
+            <div class="card card-medals">
+                <div class="medals-row">
+                    <!-- Medal icon × 4 -->
+                    <div class="medal">
+                        <svg viewBox="0 0 50 60" width="52" height="62">
+                            <!-- Ribbon left -->
+                            <path d="M15 0 L25 18 L10 18 Z" fill="#555" />
+                            <!-- Ribbon right -->
+                            <path d="M35 0 L40 18 L25 18 Z" fill="#444" />
+                            <!-- Circle -->
+                            <circle cx="25" cy="38" r="18" fill="#3a3a3a" stroke="#666" stroke-width="1.5" />
+                            <!-- Star inside -->
+                            <polygon
+                                points="25,24 27.8,33 37,33 29.6,38.2 32.4,47.4 25,42.2 17.6,47.4 20.4,38.2 13,33 22.2,33"
+                                fill="#888" />
+                        </svg>
+                    </div>
+                    <div class="medal">
+                        <svg viewBox="0 0 50 60" width="52" height="62">
+                            <path d="M15 0 L25 18 L10 18 Z" fill="#555" />
+                            <path d="M35 0 L40 18 L25 18 Z" fill="#444" />
+                            <circle cx="25" cy="38" r="18" fill="#3a3a3a" stroke="#666" stroke-width="1.5" />
+                            <polygon
+                                points="25,24 27.8,33 37,33 29.6,38.2 32.4,47.4 25,42.2 17.6,47.4 20.4,38.2 13,33 22.2,33"
+                                fill="#888" />
+                        </svg>
+                    </div>
+                    <div class="medal">
+                        <svg viewBox="0 0 50 60" width="52" height="62">
+                            <path d="M15 0 L25 18 L10 18 Z" fill="#555" />
+                            <path d="M35 0 L40 18 L25 18 Z" fill="#444" />
+                            <circle cx="25" cy="38" r="18" fill="#3a3a3a" stroke="#666" stroke-width="1.5" />
+                            <polygon
+                                points="25,24 27.8,33 37,33 29.6,38.2 32.4,47.4 25,42.2 17.6,47.4 20.4,38.2 13,33 22.2,33"
+                                fill="#888" />
+                        </svg>
+                    </div>
+                    <div class="medal">
+                        <svg viewBox="0 0 50 60" width="52" height="62">
+                            <path d="M15 0 L25 18 L10 18 Z" fill="#555" />
+                            <path d="M35 0 L40 18 L25 18 Z" fill="#444" />
+                            <circle cx="25" cy="38" r="18" fill="#3a3a3a" stroke="#666" stroke-width="1.5" />
+                            <polygon
+                                points="25,24 27.8,33 37,33 29.6,38.2 32.4,47.4 25,42.2 17.6,47.4 20.4,38.2 13,33 22.2,33"
+                                fill="#888" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 8 · col 2 bottom / separate row
+         Lime bg — QR code + AppStore
+    ───────────────────────────────────────── -->
+            <div class="card card-appstore">
+                <!-- QR code SVG (simplified) -->
+                <div class="qr-wrap">
+                    <svg viewBox="0 0 80 80" width="72" height="72">
+                        <rect width="80" height="80" fill="#C5F135" />
+                        <!-- QR pattern simplified -->
+                        <rect x="5" y="5" width="28" height="28" fill="#111" rx="2" />
+                        <rect x="9" y="9" width="20" height="20" fill="#C5F135" rx="1" />
+                        <rect x="12" y="12" width="14" height="14" fill="#111" rx="1" />
+                        <rect x="47" y="5" width="28" height="28" fill="#111" rx="2" />
+                        <rect x="51" y="9" width="20" height="20" fill="#C5F135" rx="1" />
+                        <rect x="54" y="12" width="14" height="14" fill="#111" rx="1" />
+                        <rect x="5" y="47" width="28" height="28" fill="#111" rx="2" />
+                        <rect x="9" y="51" width="20" height="20" fill="#C5F135" rx="1" />
+                        <rect x="12" y="54" width="14" height="14" fill="#111" rx="1" />
+                        <!-- Data dots -->
+                        <rect x="38" y="5" width="5" height="5" fill="#111" />
+                        <rect x="38" y="12" width="5" height="5" fill="#111" />
+                        <rect x="38" y="19" width="5" height="5" fill="#111" />
+                        <rect x="38" y="26" width="5" height="5" fill="#111" />
+                        <rect x="47" y="38" width="5" height="5" fill="#111" />
+                        <rect x="54" y="38" width="5" height="5" fill="#111" />
+                        <rect x="61" y="38" width="5" height="5" fill="#111" />
+                        <rect x="68" y="38" width="5" height="5" fill="#111" />
+                        <rect x="38" y="47" width="5" height="5" fill="#111" />
+                        <rect x="38" y="54" width="5" height="5" fill="#111" />
+                        <rect x="47" y="54" width="5" height="5" fill="#111" />
+                        <rect x="54" y="47" width="5" height="5" fill="#111" />
+                        <rect x="61" y="54" width="5" height="5" fill="#111" />
+                        <rect x="68" y="61" width="5" height="5" fill="#111" />
+                        <rect x="61" y="68" width="5" height="5" fill="#111" />
+                    </svg>
+                </div>
+                <div class="appstore-text">
+                    <div class="appstore-head">
+                        <span class="appstore-label">APPSTORE</span>
+                        <span class="appstore-arrow">↗</span>
+                    </div>
+                    <p class="appstore-desc">Download the app and get<br />10% off your first purchase</p>
+                </div>
+            </div>
+
+            <!-- ─────────────────────────────────────
+         CARD 9 · col 3-4, row 3
+         White bg — Rating card
+    ───────────────────────────────────────── -->
+            <div class="card card-rating">
+                <div class="rating-left">
+                    <h2 class="rating-title">ONLY THE BEST<br />AUTHORS</h2>
+                    <p class="rating-sub">184 guys with a unique vision</p>
+                </div>
+                <div class="rating-right">
+                    <div class="rating-score">4.97</div>
+                    <div class="stars">
+                        <!-- 4 full stars + 1 half -->
+                        <svg viewBox="0 0 24 24" fill="#F5C800" width="22" height="22">
+                            <polygon
+                                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="#F5C800" width="22" height="22">
+                            <polygon
+                                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="#F5C800" width="22" height="22">
+                            <polygon
+                                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="#F5C800" width="22" height="22">
+                            <polygon
+                                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+                        </svg>
+                        <!-- Half star -->
+                        <svg viewBox="0 0 24 24" width="22" height="22">
+                            <defs>
+                                <linearGradient id="half">
+                                    <stop offset="50%" stop-color="#F5C800" />
+                                    <stop offset="50%" stop-color="#444" />
+                                </linearGradient>
+                            </defs>
+                            <polygon
+                                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+                                fill="url(#half)" />
+                        </svg>
+                    </div>
+                    <button class="best-reviews-btn">
+                        BEST REVIEWS
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" width="14" height="14">
+                            <polyline points="9,18 15,12 9,6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div><!-- end .bento -->
+    </div><!-- end .page-wrap -->
+
+    <script>
+        // Rotate the "MORE CASES" ring continuously
+        const svg = document.getElementById('rotatingSvg');
+        let angle = 0;
+        function rotate() {
+            angle += 0.3;
+            svg.style.transform = `rotate(${angle}deg)`;
+            requestAnimationFrame(rotate);
+        }
+        rotate();
+    </script>
+
+</body>
+
+</html>

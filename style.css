@@ -1,0 +1,934 @@
+/* =============================================
+   BUTUSIC — Illustrations Exhibition
+   Bento Grid Layout
+   CSS Properties:
+   display:grid | grid-template-columns | grid-template-rows
+   grid-column | grid-row | gap
+   position:relative | position:absolute
+   display:flex | border-radius | overflow
+   ============================================= */
+
+/* ── RESET & VARIABLES ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --black: #0e0e0e;
+    --card-dark: #1a1a1a;
+    --card-black: #111111;
+    --purple: #7B2FFF;
+    --lime: #C5F135;
+    --white: #FFFFFF;
+    --gray: #888888;
+    --gray-light: #aaaaaa;
+    --border: rgba(255, 255, 255, 0.08);
+
+    --radius: 20px;
+    --gap: 12px;
+
+    --font-head: 'Bebas Neue', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+}
+
+html,
+body {
+    background: var(--black);
+    font-family: var(--font-body);
+    color: var(--white);
+    min-height: 100vh;
+}
+
+/* ── PAGE WRAPPER ── */
+.page-wrap {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* ══════════════════════════════════════════════
+   BENTO GRID
+   
+   COLUMNS: 4 equal-ish columns
+   col 1: ~280px  (char purple + brand card)
+   col 2: ~280px  (circle + info + medals + appstore)
+   col 3: ~260px  (nav menu — spans all rows)
+   col 4: ~280px  (banner + lime char + rating)
+
+   ROWS: defined by content height
+══════════════════════════════════════════════ */
+.bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr 240px 1fr;
+    grid-template-rows:
+        300px
+        /* row 1 */
+        220px
+        /* row 2 */
+        160px
+        /* row 3 */
+        140px;
+    /* row 4 */
+    gap: var(--gap);
+}
+
+
+/* ── BASE CARD ── */
+.card {
+    background: var(--card-dark);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    /* for absolute children */
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 1 — Purple character  [col1, row1]
+══════════════════════════════════════════════ */
+.card-char-purple {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: #8B2FFF;
+    overflow: hidden;
+}
+
+.char-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Fallback character art (shows if image fails) */
+.char-blob {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.purple-blob .char-face {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #f0d0c0;
+    border-radius: 50%;
+    margin-bottom: 4px;
+}
+
+.char-eye {
+    position: absolute;
+    width: 12px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid #333;
+    top: 30px;
+}
+
+.left-eye {
+    left: 18px;
+}
+
+.right-eye {
+    right: 18px;
+}
+
+.char-hair {
+    position: absolute;
+    width: 84px;
+    height: 40px;
+    background: #c8d8f0;
+    border-radius: 50% 50% 0 0;
+    top: -8px;
+    left: -2px;
+}
+
+.char-body {
+    width: 100%;
+    height: 140px;
+}
+
+.green-jacket {
+    background: linear-gradient(180deg, #8BC34A 0%, #558B2F 100%);
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 2 — Rotating circle  [col2, row1-2]
+══════════════════════════════════════════════ */
+.card-circle {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    /* spans 2 rows = taller */
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotating-ring {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ring-svg {
+    width: 220px;
+    height: 220px;
+    /* rotation handled by JS */
+    transform-origin: center center;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 3 — Navigation menu  [col3, row1-4]
+   Spans ALL rows on the right-center
+══════════════════════════════════════════════ */
+.card-nav {
+    grid-column: 3 / 4;
+    grid-row: 1 / 5;
+    /* spans ALL 4 rows */
+    background: #141414;
+    padding: 28px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-icon {
+    color: var(--gray-light);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item span {
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gray-light);
+}
+
+/* AUCTION — active state */
+.nav-active {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-active .nav-icon,
+.nav-active span {
+    color: var(--white);
+}
+
+/* Purple dot on auction row */
+.active-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--purple);
+    border-radius: 50%;
+    position: absolute;
+    /* float to right side */
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 8px 0;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 4a — Purple banner  [col4, row1]
+══════════════════════════════════════════════ */
+.card-banner-purple {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+    background: var(--purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0 20px;
+}
+
+.banner-left,
+.banner-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    padding: 16px 0;
+}
+
+.banner-icon {
+    flex-shrink: 0;
+    opacity: 0.9;
+}
+
+.banner-left span,
+.banner-right span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.banner-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    margin: 0 16px;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 4b — Lime character  [col4, row2-3]
+══════════════════════════════════════════════ */
+.card-char-lime {
+    grid-column: 4 / 5;
+    grid-row: 2 / 4;
+    /* spans 2 rows */
+    background: #C5F135;
+    overflow: hidden;
+}
+
+.lime-char-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* CSS fallback for lime card */
+.lime-char-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+.lc-head {
+    width: 90px;
+    height: 90px;
+    background: #f0d0c0;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.lc-body {
+    width: 100%;
+    height: 220px;
+    background: #4040CC;
+    border-radius: 20px 20px 0 0;
+    margin-top: -20px;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 5 — BUTUSIC brand  [col1, row2-4]
+   Black with lime border
+══════════════════════════════════════════════ */
+.card-brand {
+    grid-column: 1 / 2;
+    grid-row: 2 / 5;
+    /* spans rows 2,3,4 */
+    background: #0e0e0e;
+    border: 1.5px solid var(--lime);
+    border-radius: var(--radius);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.brand-name {
+    font-family: var(--font-head);
+    font-size: 5.2rem;
+    font-weight: 400;
+    /* Bebas Neue is naturally bold */
+    line-height: 0.9;
+    letter-spacing: -1px;
+    color: var(--white);
+}
+
+.brand-sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--purple);
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.brand-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 16px 0;
+}
+
+.bitcoin-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.bitcoin-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(197, 241, 53, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid rgba(197, 241, 53, 0.3);
+}
+
+.bitcoin-text {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.4;
+}
+
+.barcode {
+    margin-top: auto;
+    padding-top: 18px;
+    opacity: 0.7;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 6 — Exhibition info  [col2, row2]
+══════════════════════════════════════════════ */
+.card-info {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    /* moved to row3 since circle takes row1-2 */
+    background: #141414;
+    padding: 22px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.loc-icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.info-location span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--gray-light);
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+}
+
+.info-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+}
+
+.info-url {
+    font-size: 0.72rem;
+    color: var(--gray);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 7 — Medals  [col2, row3]
+══════════════════════════════════════════════ */
+.card-medals {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    background: #141414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.medals-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.medal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.medal:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 8 — AppStore  [col1 — wait, it's col2]
+   Actually in image it's below medals on col2
+   But let's match: lime bg, col2 row... 
+   Looking at image again: it's bottom of col2
+══════════════════════════════════════════════ */
+/* Appstore card is NOT in bento - it's INSIDE card-medals area?
+   Actually looking at image: medals + appstore are TWO separate cards
+   stacked in col 2, rows 3 and bottom. Let me re-examine:
+   
+   Image col2 from top to bottom:
+   row1-2: circle (tall)
+   row3:   info card  
+   row3-4: medals + appstore side by side? 
+   
+   Actually medals and appstore are SIDE BY SIDE in the same row!
+   Let me fix: medals [col2 row3] appstore [col2? no...]
+   
+   Re-reading image: bottom-left area has medals card and appstore card
+   side by side. They share the same row. So:
+   medals = col2 row4 (small)
+   appstore = col2 row4? No — they're different widths...
+   
+   Correct reading: medals fills col2 row3-4 area,
+   appstore is BELOW medals OR they're same width stacked.
+   
+   Best match: medals row3, appstore row4 — both col2.
+*/
+.card-appstore {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    /* this overlaps medals - need adjustment */
+    background: var(--lime);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+}
+
+/* Actually medals and appstore must share a row side by side.
+   Let me restructure: medals col2 and appstore col2 overlap.
+   Solution: put them in sub-grid or make medals col1-portion.
+   
+   REAL FIX: Looking at image carefully —
+   Bottom row has: [brand continues] [medals+appstore side by side] [nav] [rating]
+   The medals + appstore card are in the SAME cell as a flex row.
+   But they look like separate cards... they're two mini-cards inside one row.
+   
+   Simplest approach: medals and appstore are separate grid items, same row,
+   split by adjusting column spans. Since col2 = single column in my grid,
+   I'll just stack them (medals row3, appstore row4). See CSS above.
+   
+   But in the IMAGE they appear to be in a 2-col sub-area...
+   Actually medals is col2 (pure), appstore is col2-bottom.
+   Let me keep: card-medals=row3, card-appstore=row4 on col2.
+   They won't overlap since I removed the duplicate declaration above.
+*/
+
+.qr-wrap {
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--lime);
+}
+
+.appstore-text {
+    flex: 1;
+}
+
+.appstore-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.appstore-label {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: 1px;
+}
+
+.appstore-arrow {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.appstore-desc {
+    font-size: 0.72rem;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+/* ══════════════════════════════════════════════
+   CARD 9 — Rating  [col3-4, row4]
+   White background — spans 2 cols
+══════════════════════════════════════════════ */
+.card-rating {
+    grid-column: 3 / 5;
+    /* spans col3 AND col4 */
+    grid-row: 4 / 5;
+    background: var(--white);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px;
+    gap: 20px;
+}
+
+.rating-left {
+    flex: 1;
+}
+
+.rating-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.rating-sub {
+    font-size: 0.82rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.rating-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.rating-score {
+    font-family: var(--font-head);
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1;
+}
+
+.stars {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.best-reviews-btn {
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    padding: 11px 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 4px;
+}
+
+.best-reviews-btn:hover {
+    background: #6920ee;
+    transform: scale(1.03);
+}
+
+
+/* ══════════════════════════════════════════════
+   FIX GRID OVERLAPS:
+   medals (row3) and appstore (row4) are on col2.
+   card-info is on col2 row3 — conflict!
+   
+   FINAL GRID PLAN (matching image exactly):
+   
+   col1      col2       col3    col4
+   r1: char  | circle   | nav   | banner
+   r2: brand | circle   | nav   | lime-char
+   r3: brand | info     | nav   | lime-char
+   r4: brand | medals   | rating(spans col3-4)
+   r5: brand | appstore | rating(continues)
+   
+   Let me revamp with 5 rows:
+══════════════════════════════════════════════ */
+
+/* Override grid to 5 rows */
+.bento {
+    grid-template-rows:
+        260px
+        /* row 1: char / circle top / banner */
+        180px
+        /* row 2: brand top / circle bottom / lime-char top */
+        160px
+        /* row 3: brand mid / info / lime-char bottom */
+        130px
+        /* row 4: brand bot / medals / rating */
+        120px;
+    /* row 5: brand bot2 / appstore / rating */
+}
+
+/* Reposition all cards */
+.card-char-purple {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.card-circle {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    /* 2 rows tall */
+}
+
+.card-nav {
+    grid-column: 3 / 4;
+    grid-row: 1 / 5;
+    /* spans rows 1-4 */
+}
+
+.card-banner-purple {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+
+.card-char-lime {
+    grid-column: 4 / 5;
+    grid-row: 2 / 4;
+    /* 2 rows */
+}
+
+.card-brand {
+    grid-column: 1 / 2;
+    grid-row: 2 / 6;
+    /* spans rows 2-5 */
+}
+
+.card-info {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+.card-medals {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+.card-appstore {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+}
+
+.card-rating {
+    grid-column: 3 / 5;
+    /* spans col3+col4 */
+    grid-row: 4 / 6;
+    /* spans rows 4+5 */
+}
+
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+    .page-wrap {
+        padding: 14px;
+    }
+
+    .bento {
+        gap: 10px;
+    }
+
+    .brand-name {
+        font-size: 4rem;
+    }
+
+    .rating-score {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .bento {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .card-char-purple {
+        grid-column: 1/2;
+        grid-row: auto;
+        min-height: 240px;
+    }
+
+    .card-circle {
+        grid-column: 2/3;
+        grid-row: auto;
+        min-height: 240px;
+    }
+
+    .card-banner-purple {
+        grid-column: 1/3;
+        grid-row: auto;
+        min-height: 80px;
+    }
+
+    .card-nav {
+        grid-column: 1/3;
+        grid-row: auto;
+    }
+
+    .card-brand {
+        grid-column: 1/2;
+        grid-row: auto;
+        min-height: 380px;
+    }
+
+    .card-char-lime {
+        grid-column: 2/3;
+        grid-row: auto;
+        min-height: 300px;
+    }
+
+    .card-info {
+        grid-column: 1/2;
+        grid-row: auto;
+        min-height: 160px;
+    }
+
+    .card-medals {
+        grid-column: 2/3;
+        grid-row: auto;
+        min-height: 130px;
+    }
+
+    .card-appstore {
+        grid-column: 1/2;
+        grid-row: auto;
+        min-height: 120px;
+    }
+
+    .card-rating {
+        grid-column: 1/3;
+        grid-row: auto;
+        min-height: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    .bento {
+        grid-template-columns: 1fr;
+    }
+
+    .card-char-purple,
+    .card-circle,
+    .card-banner-purple,
+    .card-nav,
+    .card-brand,
+    .card-char-lime,
+    .card-info,
+    .card-medals,
+    .card-appstore,
+    .card-rating {
+        grid-column: 1 / 2;
+        grid-row: auto;
+    }
+
+    .card-nav {
+        min-height: 360px;
+    }
+
+    .card-char-purple,
+    .card-circle,
+    .card-char-lime {
+        min-height: 220px;
+    }
+
+    .card-brand {
+        min-height: 320px;
+    }
+
+    .brand-name {
+        font-size: 3.5rem;
+    }
+
+    .rating-score {
+        font-size: 2.8rem;
+    }
+
+    .card-rating {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rating-right {
+        align-items: flex-start;
+    }
+}
